@@ -4,7 +4,7 @@ from dotenv import load_dotenv
 from openai import OpenAI
 import json
 import sys
-from fastapi import FastAPI
+from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
 from typing import List, Dict, Any
 
@@ -184,5 +184,6 @@ def ask_question(data: QuestionRequest):
 
 @app.get("/")
 def home():
+    print(os.getenv("OPENAI_API_KEY"))
     return {"message": "IMCS DB Bot API Running"}
 
